@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098320905320",
+    "project_id": "snap-chef-7b04a",
+    "storage_bucket": "snap-chef-7b04a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098320905320:android:58485d7f63c8de5ba0a7dd",
+        "android_client_info": {
+          "package_name": "com.example.snap_chef"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPeZ4NQoIiJyT0YAQDUaJFkVBN6fpkOUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
