@@ -9,15 +9,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,13 +50,29 @@ fun SignInPageScreen(
     val authState by signInPageViewModel.authState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
-    var isLoading by remember {
-        mutableStateOf(false)
-    }
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
     ) {
+
+        when(authState){
+            is Resource.Error -> {
+                Toast.makeText(context,authState.message,Toast.LENGTH_SHORT).show()
+            }
+            is Resource.Loading -> {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            }
+            is Resource.Success -> {
+                signInPageViewModel.updateSignInState(true)
+                navController.navigate(Routes.HomeScreen.routes){
+                    popUpTo(Routes.SignInPageScreen.routes){
+                        inclusive = true
+                    }
+                }
+            }
+            else -> {}
+        }
         Image(
             painter = painterResource(id = R.drawable.signinpagebg),
             contentDescription = null,
@@ -123,23 +137,6 @@ fun SignInPageScreen(
                         }
                     }
 
-                    when(authState){
-                        is Resource.Error -> {
-                            Toast.makeText(context,authState.message,Toast.LENGTH_SHORT).show()
-                        }
-                        is Resource.Loading -> {
-                            isLoading = true
-                        }
-                        is Resource.Success -> {
-                            signInPageViewModel.updateSignInState(true)
-                            navController.navigate(Routes.HomeScreen.routes){
-                                popUpTo(Routes.SignInPageScreen.routes){
-                                    inclusive = true
-                                }
-                            }
-                        }
-                        else -> {}
-                    }
                 }
             )
             Spacer(modifier = Modifier.height(20.dp))

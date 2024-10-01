@@ -28,7 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -40,7 +39,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.snap_chef.R
 import com.example.snap_chef.common.Resource
 import com.example.snap_chef.common.utils_components.AuthButton
 import com.example.snap_chef.data.userValidation.RegisterValidation
@@ -262,25 +260,6 @@ fun SignUpScreen(
                 }
             )
 
-            Text(
-                text = "OR",
-                style = TextStyle(
-                    fontFamily = poppinsFontFamily,
-                    color = Color.Black,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight(500)
-                ),
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-
-            AuthButton(
-                text = "Sign In with Google",
-                buttonColor = baseGreen,
-                textColor = Color.White,
-                icon = painterResource(id = R.drawable.google)
-            ) {
-
-            }
             Spacer(modifier = Modifier.height(10.dp))
             Row(
                 modifier = Modifier.padding(start = 20.dp),

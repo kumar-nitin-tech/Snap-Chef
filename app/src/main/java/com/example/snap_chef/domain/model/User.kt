@@ -7,3 +7,9 @@ data class User(
 ){
     constructor():this("","","")
 }
+
+data class GoogleUser(
+    val uid: String = "",
+    val displayName: String? = null,
+    val email: String? = null
+)
