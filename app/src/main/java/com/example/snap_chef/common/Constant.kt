@@ -5,7 +5,6 @@ import com.example.snap_chef.BuildConfig
 
 object Constant{
     const val WEB_CLIENT_ID = BuildConfig.webClient
-    const val SIGN_IN_GOOGLE = "signInWithGoogle"
     const val SIGN_IN = "SignIn"
     const val SIGN_IN_STATE = "SignInSuccess"
     const val COLLECTION = "userData"
