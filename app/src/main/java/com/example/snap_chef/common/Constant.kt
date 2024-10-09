@@ -4,12 +4,11 @@ import com.example.snap_chef.BuildConfig
 
 
 object Constant{
-    const val WEB_CLIENT_ID = "1098320905320-6btgbptogc7i7mevamnb6m7nv6te7q61.apps.googleusercontent.com"
+    const val WEB_CLIENT_ID = BuildConfig.webClient
     const val SIGN_IN_GOOGLE = "signInWithGoogle"
     const val SIGN_IN = "SignIn"
     const val SIGN_IN_STATE = "SignInSuccess"
     const val COLLECTION = "userData"
-    const val API_KEY = BuildConfig.apiKey
     const val PROMPT = "Accurately identify the food in the image and provide an appropriate recipe consistent with your analysis.\n" +
             "Response should be in json Schema as following:\n" +
             "{\n" +

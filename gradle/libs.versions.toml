@@ -31,6 +31,7 @@ secretsGradlePlugin = "2.0.1"
 firebaseStorageKtx = "21.0.0"
 playServicesAuth = "21.2.0"
 googleid = "1.1.1"
+swipe = "1.1.1"
 
 [libraries]
 androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "cameraExtensions" }
@@ -70,6 +71,7 @@ secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.se
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
+swipe = { module = "me.saket.swipe:swipe", version.ref = "swipe" }
 #daggerHilt = { group= "com.google.dagger:hilt-android", name = "dagger-hilt", version.ref = "daggerVersion"}
 
 [plugins]

@@ -17,13 +17,9 @@ class SplashViewModel @Inject constructor(
     private val _startDestination = mutableStateOf(Routes.SplashScreen.routes)
     val startDestination = _startDestination
 
-    private val _signIn = mutableStateOf(false)
-    val signIn = _signIn.value
-
     init {
         viewModelScope.launch {
             signInState.readLoginState().collect(){
-                _signIn.value = it
                 if(it){
                     _startDestination.value = Routes.HomeScreen.routes
                 }else{

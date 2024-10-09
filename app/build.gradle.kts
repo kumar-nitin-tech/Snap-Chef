@@ -26,12 +26,13 @@ android {
         }
         val properties = Properties()
         properties.load(project.rootProject.file("local.properties").inputStream())
-        buildConfigField("String", "apiKey", properties.getProperty("apiKey"))
+        buildConfigField("String", "apiKey", "\"${properties.getProperty("apiKey")}\"")
+        buildConfigField("String", "webClient", "\"${properties.getProperty("webClient")}\"")
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -77,6 +78,9 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //Swipe
+    implementation(libs.swipe)
 
     //Gemini
     implementation(libs.generativeai)

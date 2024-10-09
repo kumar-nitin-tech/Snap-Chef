@@ -59,6 +59,11 @@ fun SignInPageScreen(
         when(authState){
             is Resource.Error -> {
                 Toast.makeText(context,authState.message,Toast.LENGTH_SHORT).show()
+                navController.navigate(Routes.SignInPageScreen.routes){
+                    popUpTo(Routes.SignInPageScreen.routes){
+                        inclusive = true
+                    }
+                }
             }
             is Resource.Loading -> {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))

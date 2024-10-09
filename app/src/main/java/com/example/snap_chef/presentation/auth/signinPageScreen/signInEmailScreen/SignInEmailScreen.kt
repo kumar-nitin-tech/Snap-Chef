@@ -19,9 +19,11 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,6 +45,8 @@ import com.example.snap_chef.R
 import com.example.snap_chef.common.Resource
 import com.example.snap_chef.common.utils_components.AuthButton
 import com.example.snap_chef.data.userValidation.RegisterValidation
+import com.example.snap_chef.presentation.auth.signinPageScreen.googleSignIn.GoogleAuthClient
+import com.example.snap_chef.presentation.auth.signinPageScreen.signInViewModel.SignInPageViewModel
 import com.example.snap_chef.presentation.navigation.Routes
 import com.example.snap_chef.presentation.ui.theme.baseGreen
 import com.example.snap_chef.presentation.ui.theme.poppinsFontFamily
@@ -53,6 +57,9 @@ fun SignInEmailScreen(
     navController: NavHostController,
     signInEmailViewModel: SignInEmailViewModel = hiltViewModel()
 ){
+    val coroutineScope = rememberCoroutineScope()
+    val signInPageViewModel: SignInPageViewModel = hiltViewModel()
+    val authState by signInPageViewModel.authState.collectAsState()
     val context = LocalContext.current
     var isLoading by remember {
         mutableStateOf(false)
@@ -80,6 +87,23 @@ fun SignInEmailScreen(
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
+        when(authState){
+            is Resource.Error -> {
+                Toast.makeText(context,authState.message,Toast.LENGTH_SHORT).show()
+            }
+            is Resource.Loading -> {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            }
+            is Resource.Success -> {
+                signInPageViewModel.updateSignInState(true)
+                navController.navigate(Routes.HomeScreen.routes){
+                    popUpTo(Routes.SignInPageScreen.routes){
+                        inclusive = true
+                    }
+                }
+            }
+            else -> {}
+        }
         if(isLoading){
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
@@ -223,7 +247,13 @@ fun SignInEmailScreen(
                 textColor = Color.White,
                 icon = painterResource(id = R.drawable.google),
                 onClick = {
-
+                    coroutineScope.launch {
+                        GoogleAuthClient().googleClient(context).onSuccess { credential->
+                            signInPageViewModel.googleSignIn(credential)
+                        }.onFailure {
+                            Toast.makeText(context,it.message,Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             )
             Spacer(modifier = Modifier.height(10.dp))

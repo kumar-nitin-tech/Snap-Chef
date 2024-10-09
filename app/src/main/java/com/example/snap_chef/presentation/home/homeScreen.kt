@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -35,6 +36,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,6 +55,8 @@ import com.example.snap_chef.presentation.home.util.RecipeCard
 import com.example.snap_chef.presentation.home.util.SaveRecipeSharedViewModel
 import com.example.snap_chef.presentation.home.util.UriToBitmap
 import com.example.snap_chef.presentation.navigation.Routes
+import me.saket.swipe.SwipeAction
+import me.saket.swipe.SwipeableActionsBox
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,6 +80,7 @@ fun HomeScreen(
     }
 
     val allRecipe by homeScreenViewModel.allRecipes.collectAsState()
+    val deleteState by homeScreenViewModel.deleteState.collectAsState()
 
     val pickImage = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()){uri->
         uri?.let {
@@ -167,12 +172,38 @@ fun HomeScreen(
                     is Resource.Success -> {
 
                         items(allRecipe.data!!){recipe->
+                            val delete = SwipeAction(
+                                onSwipe = {
+                                    homeScreenViewModel.deleteRecipe(recipe)
+                                    if(deleteState){
+                                        Toast.makeText(context,"Recipe Deleted Successfully", Toast.LENGTH_SHORT).show()
+                                    }else{
+                                        Toast.makeText(context,"Recipe Deleted Successfully", Toast.LENGTH_SHORT).show()
+                                    }
+                                    homeScreenViewModel.getAllRecipes()
+                                },
+                                icon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Delete ,
+                                        contentDescription = "Delete recipe",
+                                        modifier = Modifier.padding(16.dp),
+                                        tint = Color.White
+                                    )
+                                },
+                                background = Color.Red.copy(alpha = 0.5f),
+                                isUndo = true
+                            )
+                            SwipeableActionsBox(
+                                swipeThreshold = 200.dp,
+                                endActions = listOf(delete)
+                            ) {
+                                RecipeCard(saveRecipe = recipe, onCardClick = {
+                                    saveRecipeSharedViewModel.saveSharedRecipe(recipe)
 
-                            RecipeCard(saveRecipe = recipe, onCardClick = {
-                                saveRecipeSharedViewModel.saveSharedRecipe(recipe)
+                                    navController.navigate(Routes.SavedRecipeScreen.routes)
+                                })
+                            }
 
-                                navController.navigate(Routes.SavedRecipeScreen.routes)
-                            })
                             Spacer(modifier = Modifier.height(10.dp))
                         }
                     }

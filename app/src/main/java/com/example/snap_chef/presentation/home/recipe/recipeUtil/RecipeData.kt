@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
@@ -46,7 +45,7 @@ fun RecipeData(
                     bitmap = imageBitmap,
                     contentDescription = "Recipe Image" ,
                     modifier = Modifier
-                        .rotate(90f)
+//                        .rotate(90f)
                         .align(Alignment.Center)
                         .fillParentMaxWidth() ,
                     contentScale = ContentScale.Fit
