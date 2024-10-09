@@ -1,4 +1,4 @@
-package com.example.snap_chef.presentation.home.recipe
+package com.example.snap_chef.presentation.home.recipe.viewmodel
 
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel

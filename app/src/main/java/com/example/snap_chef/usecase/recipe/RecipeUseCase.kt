@@ -1,4 +1,4 @@
-package com.example.snap_chef.presentation.home.recipe
+package com.example.snap_chef.usecase.recipe
 
 import android.graphics.Bitmap
 import android.net.http.HttpException

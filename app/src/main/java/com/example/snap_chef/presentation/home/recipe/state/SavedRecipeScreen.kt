@@ -1,4 +1,4 @@
-package com.example.snap_chef.presentation.home.recipe
+package com.example.snap_chef.presentation.home.recipe.state
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

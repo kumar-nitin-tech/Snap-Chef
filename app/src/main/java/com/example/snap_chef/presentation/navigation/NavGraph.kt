@@ -10,9 +10,9 @@ import com.example.snap_chef.presentation.auth.signinPageScreen.signInEmailScree
 import com.example.snap_chef.presentation.auth.signupScreen.SignUpScreen
 import com.example.snap_chef.presentation.home.HomeScreen
 import com.example.snap_chef.presentation.home.camera.CameraScreen
-import com.example.snap_chef.presentation.home.recipe.ImageViewModel
+import com.example.snap_chef.presentation.home.recipe.viewmodel.ImageViewModel
 import com.example.snap_chef.presentation.home.recipe.RecipeScreen
-import com.example.snap_chef.presentation.home.recipe.SavedRecipeScreen
+import com.example.snap_chef.presentation.home.recipe.state.SavedRecipeScreen
 import com.example.snap_chef.presentation.home.util.SaveRecipeSharedViewModel
 import com.example.snap_chef.presentation.splash.SplashScreen
 

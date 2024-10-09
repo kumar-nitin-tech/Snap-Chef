@@ -1,4 +1,4 @@
-package com.example.snap_chef.presentation.home.recipe
+package com.example.snap_chef.presentation.home.recipe.viewmodel
 
 import android.graphics.Bitmap
 import android.os.Build
@@ -7,8 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.snap_chef.common.Resource
 import com.example.snap_chef.domain.recipeModel.SaveRecipe
-import com.example.snap_chef.presentation.home.recipe.recipeUtil.SaveRecipeImageUseCase
-import com.example.snap_chef.presentation.home.recipe.recipeUtil.SaveRecipeUseCase
+import com.example.snap_chef.presentation.home.recipe.state.RecipeState
+import com.example.snap_chef.presentation.home.recipe.state.SaveRecipeImageState
+import com.example.snap_chef.presentation.home.recipe.state.SaveRecipeState
+import com.example.snap_chef.usecase.recipe.RecipeUseCase
+import com.example.snap_chef.usecase.saverecipe.SaveRecipeImageUseCase
+import com.example.snap_chef.usecase.saverecipe.SaveRecipeUseCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,10 +24,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecipeScreenViewModel @Inject constructor(
-    private val recipeUseCase: RecipeUseCase,
-    private val saveRecipeImageUseCase: SaveRecipeImageUseCase,
-    private val saveRecipeUseCase: SaveRecipeUseCase,
-    private val firestore: FirebaseFirestore,
+    private val recipeUseCase: RecipeUseCase ,
+    private val saveRecipeImageUseCase: SaveRecipeImageUseCase ,
+    private val saveRecipeUseCase: SaveRecipeUseCase ,
+    private val firestore: FirebaseFirestore ,
     private val firebaseAuth: FirebaseAuth
 ): ViewModel() {
     private val _recipe = MutableStateFlow(RecipeState())

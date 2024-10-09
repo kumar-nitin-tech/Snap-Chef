@@ -1,4 +1,4 @@
-package com.example.snap_chef.presentation.home
+package com.example.snap_chef.presentation.home.homeviewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

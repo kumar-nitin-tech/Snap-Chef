@@ -24,13 +24,15 @@ import androidx.navigation.compose.rememberNavController
 import com.example.snap_chef.domain.recipeModel.ApiResource
 import com.example.snap_chef.domain.recipeModel.SaveRecipe
 import com.example.snap_chef.presentation.home.recipe.recipeUtil.RecipeData
+import com.example.snap_chef.presentation.home.recipe.viewmodel.ImageViewModel
+import com.example.snap_chef.presentation.home.recipe.viewmodel.RecipeScreenViewModel
 import com.example.snap_chef.presentation.navigation.Routes
 
 //@RequiresExtension(extension = Build.VERSION_CODES.S , version = 7)
 @Composable
 fun RecipeScreen(
-    imageViewModel: ImageViewModel,
-    navController: NavHostController,
+    imageViewModel: ImageViewModel ,
+    navController: NavHostController ,
     recipeScreenViewModel: RecipeScreenViewModel = hiltViewModel()
 ){
     val context = LocalContext.current

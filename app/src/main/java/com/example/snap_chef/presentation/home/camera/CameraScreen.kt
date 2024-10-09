@@ -36,7 +36,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.snap_chef.R
-import com.example.snap_chef.presentation.home.recipe.ImageViewModel
+import com.example.snap_chef.presentation.home.camera.viewmodel.CameraViewModel
+import com.example.snap_chef.presentation.home.recipe.viewmodel.ImageViewModel
 import com.example.snap_chef.presentation.navigation.Routes
 
 @Composable

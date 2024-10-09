@@ -1,4 +1,4 @@
-package com.example.snap_chef.presentation.home.recipe.recipeUtil
+package com.example.snap_chef.usecase.saverecipe
 
 import com.example.snap_chef.common.Resource
 import com.example.snap_chef.data.repository.RecipeRepositoryImpl

@@ -1,4 +1,4 @@
-package com.example.snap_chef.presentation.home.recipe
+package com.example.snap_chef.presentation.home.recipe.state
 
 import com.example.snap_chef.domain.recipeModel.ApiResource
 import com.example.snap_chef.domain.recipeModel.SaveRecipe

@@ -44,7 +44,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.snap_chef.R
 import com.example.snap_chef.common.Resource
-import com.example.snap_chef.presentation.home.recipe.ImageViewModel
+import com.example.snap_chef.presentation.home.homeviewmodel.HomeScreenViewModel
+import com.example.snap_chef.presentation.home.recipe.viewmodel.ImageViewModel
 import com.example.snap_chef.presentation.home.util.FabButtonItem
 import com.example.snap_chef.presentation.home.util.FabButtonMain
 import com.example.snap_chef.presentation.home.util.MultiFloatingButton
@@ -56,8 +57,8 @@ import com.example.snap_chef.presentation.navigation.Routes
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavHostController,
-    imageViewModel: ImageViewModel,
+    navController: NavHostController ,
+    imageViewModel: ImageViewModel ,
     saveRecipeSharedViewModel: SaveRecipeSharedViewModel
 ){
 
