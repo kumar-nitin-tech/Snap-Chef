@@ -13,8 +13,6 @@ import com.example.snap_chef.presentation.home.recipe.state.SaveRecipeState
 import com.example.snap_chef.usecase.recipe.RecipeUseCase
 import com.example.snap_chef.usecase.saverecipe.SaveRecipeImageUseCase
 import com.example.snap_chef.usecase.saverecipe.SaveRecipeUseCase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,9 +24,7 @@ import javax.inject.Inject
 class RecipeScreenViewModel @Inject constructor(
     private val recipeUseCase: RecipeUseCase ,
     private val saveRecipeImageUseCase: SaveRecipeImageUseCase ,
-    private val saveRecipeUseCase: SaveRecipeUseCase ,
-    private val firestore: FirebaseFirestore ,
-    private val firebaseAuth: FirebaseAuth
+    private val saveRecipeUseCase: SaveRecipeUseCase
 ): ViewModel() {
     private val _recipe = MutableStateFlow(RecipeState())
     val recipe= _recipe.asStateFlow()
