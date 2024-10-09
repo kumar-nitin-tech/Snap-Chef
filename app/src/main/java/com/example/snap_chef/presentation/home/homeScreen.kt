@@ -177,10 +177,11 @@ fun HomeScreen(
                                     homeScreenViewModel.deleteRecipe(recipe)
                                     if(deleteState){
                                         Toast.makeText(context,"Recipe Deleted Successfully", Toast.LENGTH_SHORT).show()
+                                        homeScreenViewModel.getAllRecipes()
                                     }else{
                                         Toast.makeText(context,"Recipe Deleted Successfully", Toast.LENGTH_SHORT).show()
                                     }
-                                    homeScreenViewModel.getAllRecipes()
+
                                 },
                                 icon = {
                                     Icon(
